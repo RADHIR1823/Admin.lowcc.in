@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lowcc.in - Admin Panel</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div class="admin-container">
+    <h1>Lowcc.in Admin Panel</h1>
+
+    <!-- Login Section -->
+    <div id="login-section">
+      <h2>Admin Login</h2>
+      <input type="email" id="adminEmail" placeholder="Email" required>
+      <input type="password" id="adminPassword" placeholder="Password" required>
+      <button id="loginBtn">Login</button>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div id="dashboard" style="display:none;">
+      <button id="logoutBtn">Logout</button>
+      <h2>Dashboard</h2>
+      
+      <div class="tabs">
+        <button onclick="showTab('payments')">Payments</button>
+        <button onclick="showTab('cards')">Cards</button>
+        <button onclick="showTab('users')">Users</button>
+      </div>
+
+      <!-- Payments Tab -->
+      <div id="payments" class="tab-content">
+        <h3>Payments (Pending / Approved)</h3>
+        <table id="paymentsTable">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Email</th>
+              <th>Receipt</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <!-- Cards Tab -->
+      <div id="cards" class="tab-content" style="display:none;">
+        <h3>Manage Cards</h3>
+        <form id="cardForm">
+          <input type="text" id="cardTitle" placeholder="Card Title" required>
+          <input type="number" id="cardPrice" placeholder="Card Price (Min ₹500)" required>
+          <input type="number" id="cardBalance" placeholder="Card Balance" required>
+          <input type="file" id="cardPdf" accept="application/pdf" required>
+          <button type="submit">Upload Card</button>
+        </form>
+        <ul id="cardList"></ul>
+      </div>
+
+      <!-- Users Tab -->
+      <div id="users" class="tab-content" style="display:none;">
+        <h3>Registered Users</h3>
+        <ul id="userList"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
